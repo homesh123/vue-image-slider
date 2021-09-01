@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Image Slider</title>
+<link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
+</head>
+<body>
+  
+<div class="slider-wrapper">
+  <div class="slides fade" v-for="slide in slides">
+      <a v-bind:href="slide.link"><img v-bind:src="slide.imageURL"></a>
+     <div class="slide_caption">{{slide.caption}}</div>
+   </div>
+  
+  <a class="prev" v-on:click="slideAction(-1)">&#10094;</a>
+  <a class="next" v-on:click="slideAction(1)">&#10095;</a>
+</div>
+<br>
+
+<div class="slides_dots" style="text-align:center">
+  <span class="s_dot" v-on:click="selectedSlide(1)"></span> 
+  <span class="s_dot" v-on:click="selectedSlide(2)"></span> 
+  <span class="s_dot" v-on:click="selectedSlide(3)"></span>
+  <!-- <span class="s_dot" onclick="vm.selectedSlide(3)"></span>  -->
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+<script src="js/script.js"></script>
+</body>
+</html>
