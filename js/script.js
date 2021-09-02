@@ -1,4 +1,4 @@
-new Vue({
+var vm = new Vue({
     el: '.slider-wrapper',
     slideIndex:1,
     data(){
@@ -53,5 +53,4 @@ new Vue({
     }
 })
 
-
-showSlide(1);
+vm.showSlide(1);
