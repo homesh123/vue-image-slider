@@ -53,4 +53,5 @@ new Vue({
     }
 })
 
+
 showSlide(1);
