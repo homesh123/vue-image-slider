@@ -1,7 +1,6 @@
-let slideIndex = 1;
-
-var vm = new Vue({
+new Vue({
     el: '.slider-wrapper',
+    slideIndex:1,
     data(){
         return {
             slides:[
@@ -25,20 +24,20 @@ var vm = new Vue({
     },
     methods:{
         slideAction(n){
-            this.showSlide(slideIndex += n);
+            this.showSlide(this.$options.slideIndex += n);
         },
         selectedSlide(n) {
-            this.showSlide(slideIndex = n);
+            this.showSlide(this.$options.slideIndex = n);
         },
         showSlide(n){
             var i;
             var slides = document.getElementsByClassName("slides");
             var dots = document.getElementsByClassName("slides_dots");
             if (n > slides.length) {
-              slideIndex = 1
+                this.$options.slideIndex = 1
             }
             if (n < 1) {
-              slideIndex = slides.length
+                this.$options.slideIndex = slides.length
             }
             for (i = 0; i < slides.length; i++) {
               slides[i].style.display = "none";
@@ -46,12 +45,12 @@ var vm = new Vue({
             for (i = 0; i < dots.length; i++) {
               dots[i].className = dots[i].className.replace(" active", "");
             }
-            slides[slideIndex - 1].style.display = "block";
-            if(dots[slideIndex - 1]){
-            dots[slideIndex - 1].className += " active";
+            slides[this.$options.slideIndex - 1].style.display = "block";
+            if(dots[this.$options.slideIndex - 1]){
+            dots[this.$options.slideIndex - 1].className += " active";
             }
         }
     }
 })
 
-vm.showSlide(1);
+showSlide(1);
