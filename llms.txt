@@ -1,0 +1,16 @@
+# Pathfinder
+
+> Pathfinder is a free, private, 10-minute life purpose test. It combines the Ikigai-9 scale (Imai et al., 2012; English validation Fido, Kotera & Asano, 2020) with Holland's RIASEC interest model, plus strengths, values and causes. It produces a personal purpose statement, an Ikigai map, career and life directions, and a 30-day action plan adapted to the person's life stage. Answers stay in the user's browser.
+
+Key facts:
+
+- Purpose is defined, following Damon, Menon & Bronk (2003), as a stable intention to accomplish something meaningful to the self that also contributes to the world beyond the self.
+- The four-circle "ikigai Venn diagram" was published by Marc Winn in 2014; it is not a traditional Japanese model. Pathfinder uses it only to organize results.
+- Only the Ikigai-9 is a published validated scale. The 24 interest items are original to Pathfinder; the official instrument is the O*NET Interest Profiler.
+- The 30-day plan uses strengths-use (Seligman et al., 2005), implementation intentions (Gollwitzer & Sheeran, 2006) and job crafting (Wrzesniewski & Dutton, 2001).
+- Pathfinder is a self-reflection tool, not a clinical or diagnostic test.
+
+## Pages
+
+- [Purpose test](https://homesh123.github.io/Purposefinder/): Take the free test; includes an FAQ on finding purpose, ikigai and feeling lost
+- [Methodology and references](https://homesh123.github.io/Purposefinder/methodology.html): Instruments, scoring, evidence for the plan, limitations and full academic references
