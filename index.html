@@ -1,30 +1,376 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Image Slider</title>
-<link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Your Life Purpose & Ikigai Test | Pathfinder - Discover Career, Meaning & Direction</title>
+    <meta name="description" content="Free research-backed life purpose test. Discover your Ikigai, career path (RIASEC), strengths and core values, and leave with your own purpose statement and a 30-day plan.">
+    <meta name="keywords" content="find life purpose, ikigai test, purpose of life quiz, what is my purpose, career test, holland code test, RIASEC test, feeling lost what to do, find my calling, life direction test, purpose statement">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="author" content="Pathfinder">
+    <link rel="canonical" href="https://homesh123.github.io/Purposefinder/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://homesh123.github.io/Purposefinder/">
+    <meta property="og:title" content="Find Your Life Purpose & Ikigai Test | Pathfinder">
+    <meta property="og:description" content="Free research-backed test to discover your Ikigai, ideal career path, and life's purpose. Leave with your own purpose statement and a 30-day plan.">
+    <meta property="og:site_name" content="Pathfinder - Find Your Purpose">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://homesh123.github.io/Purposefinder/">
+    <meta property="twitter:title" content="Find Your Life Purpose & Ikigai Test | Pathfinder">
+    <meta property="twitter:description" content="Free research-backed test to discover your Ikigai, ideal career path, and life's purpose.">
+
+    <!-- JSON-LD Structured Data for SEO/AEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Pathfinder - Find Your Life Purpose",
+      "description": "Free research-backed life purpose assessment combining Ikigai (Ikigai-9), Holland RIASEC career theory, strengths, values and causes to help people write their own purpose statement.",
+      "url": "https://homesh123.github.io/Purposefinder/",
+      "applicationCategory": "LifestyleApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "about": [
+        { "@type": "Thing", "name": "Ikigai", "description": "Japanese concept of reason for being" },
+        { "@type": "Thing", "name": "Holland RIASEC", "description": "Vocational personality theory" }
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I find my purpose in life?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Purpose sits where four things overlap: what you love, what you are good at, what the world needs, and what you can be paid for. Notice what energizes you, name your strengths, choose a cause you care about, then test small experiments for 30 days. Purpose is built through action more than found by thinking." }
+        },
+        {
+          "@type": "Question",
+          "name": "What is ikigai?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Ikigai (生き甲斐) is a Japanese word meaning 'reason for being' — the sense that your life is worth living and that you matter to someone or something. Researchers measure it with the Ikigai-9 scale (Imai et al., 2012)." }
+        },
+        {
+          "@type": "Question",
+          "name": "What should I do when I feel lost in life?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Feeling lost is a normal starting point. Start small: track which activities give you energy, talk to people whose lives interest you, and try one low-risk experiment a week. If the feeling comes with lasting sadness or hopelessness, talk to a doctor, counselor or a helpline." }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need to change my job to live my purpose?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. Purpose can be lived through volunteering, caregiving, a side project, mentoring, or reshaping your current role toward the parts that use your strengths for people you care about." }
+        }
+      ]
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  
-<div class="slider-wrapper">
-  <div class="slides fade" v-for="slide in slides">
-      <a v-bind:href="slide.link"><img v-bind:src="slide.imageURL"></a>
-     <div class="slide_caption">{{slide.caption}}</div>
-   </div>
-  
-  <a class="prev" v-on:click="slideAction(-1)">&#10094;</a>
-  <a class="next" v-on:click="slideAction(1)">&#10095;</a>
-</div>
-<br>
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-logo">Pathfinder</div>
+            <button class="nav-cta" id="navStart" data-i18n="navStart">Start Assessment</button>
+        </div>
+    </nav>
 
-<div class="slides_dots" style="text-align:center">
-  <span class="s_dot" v-on:click="selectedSlide(1)"></span> 
-  <span class="s_dot" v-on:click="selectedSlide(2)"></span> 
-  <span class="s_dot" v-on:click="selectedSlide(3)"></span>
-  <!-- <span class="s_dot" onclick="vm.selectedSlide(3)"></span>  -->
-</div>
-<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <header class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-container">
+            <h1 class="hero-title" data-i18n="heroTitle">Find Your <span class="gradient-text">Purpose</span></h1>
+            <p class="hero-subtitle">A research-backed journey through the four questions of Ikigai — what you love, what you're good at, what the world needs, and what you can be paid for. You'll leave with your own purpose statement and a 30-day plan to live it.</p>
+            <button class="hero-button" id="heroStart" data-i18n="heroButton">Begin Your Discovery</button>
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">Short Steps</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">~20</div>
+                    <div class="stat-label" data-i18n="stat2Label">Minutes to Complete</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">1</div>
+                    <div class="stat-label">Purpose Statement</div>
+                </div>
+            </div>
+        </div>
+    </header>
 
-<script src="js/script.js"></script>
+    <section class="frameworks">
+        <div class="container">
+            <h2 class="section-title" data-i18n="frameworksTitle">Built on Proven Science</h2>
+            <p class="section-subtitle" data-i18n="frameworksSubtitle">Combining the wisdom of Ikigai with modern career psychology</p>
+            <div class="framework-grid">
+                <article class="framework-card">
+                    <div class="framework-icon">生き甲斐</div>
+                    <h3 data-i18n="ikigaiTitle">Ikigai (生き甲斐)</h3>
+                    <p data-i18n="ikigaiDesc">The Japanese concept of "reason for being" — validated by the Ikigai-9 scale (Imai et al., 2012; Fido & Kotera, 2019). Explores what brings you joy, what the world needs, and what gives life meaning.</p>
+                </article>
+                <article class="framework-card">
+                    <div class="framework-icon">RIASEC</div>
+                    <h3 data-i18n="riasecTitle">Holland's Career Theory</h3>
+                    <p data-i18n="riasecDesc">John Holland's RIASEC model identifies six personality types that predict career satisfaction and fit. Widely used in vocational psychology and validated across cultures.</p>
+                </article>
+                <article class="framework-card">
+                    <div class="framework-icon">Values</div>
+                    <h3 data-i18n="valuesTitle">Core Values &amp; Needs</h3>
+                    <p data-i18n="valuesDesc">Understanding what truly matters to you — autonomy, impact, connection, growth, security — helps align your purpose with a sustainable life.</p>
+                </article>
+                <article class="framework-card">
+                    <div class="framework-icon">Action</div>
+                    <h3>Purpose Through Action</h3>
+                    <p>Purpose is rarely found by thinking alone. Your results end in a purpose statement written from your own answers and a 30-day experiment to test it in real life — whatever your age or situation.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="assessment" id="assessment">
+        <div class="container">
+            <div class="assessment-header">
+                <h2 class="section-title" data-i18n="assessmentTitle">Discover Your Path</h2>
+                <p class="section-subtitle" data-i18n="assessmentSubtitle">Take your time. Answer honestly for the most accurate results.</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-text">
+                    <span id="currentSection">Step 1 of 5</span> • <span id="questionCounter">0 of 9 answered</span>
+                </div>
+                <p class="privacy-note">Your answers stay on this device. Nothing is sent anywhere.</p>
+            </div>
+
+            <!-- Step 1: Ikigai -->
+            <div class="section active" id="section1">
+                <h3 class="section-heading" data-i18n="part1Title">Part 1: Ikigai — Your Reason for Being</h3>
+                <p class="section-desc" data-i18n="part1Desc">Rate each statement on how well it applies to you currently.</p>
+                <div class="likert-scale">
+                    <div class="likert-labels">
+                        <span data-i18n="doesNotApply">Does not apply at all</span>
+                        <span data-i18n="appliesVeryMuch">Applies very much</span>
+                    </div>
+                </div>
+                <div id="ikigaiQuestions"></div>
+                <p class="section-error" id="error1"></p>
+                <div class="section-nav">
+                    <button class="btn-secondary" disabled data-i18n="previous">Previous</button>
+                    <button class="btn-primary" id="next1" data-i18n="nextSection">Next Section</button>
+                </div>
+            </div>
+
+            <!-- Step 2: RIASEC — what you love doing -->
+            <div class="section" id="section2">
+                <h3 class="section-heading" data-i18n="part2Title">Part 2: Interests — Holland's RIASEC</h3>
+                <p class="section-desc">How much would you enjoy doing each of these activities? Don't think about whether you're good at it — only whether you'd enjoy it.</p>
+                <div class="likert-scale">
+                    <div class="likert-labels">
+                        <span>1 = Strongly dislike</span>
+                        <span>5 = Strongly like</span>
+                    </div>
+                </div>
+                <div id="riasecQuestions"></div>
+                <p class="section-error" id="error2"></p>
+                <div class="section-nav">
+                    <button class="btn-secondary" id="prev2" data-i18n="previous">Previous</button>
+                    <button class="btn-primary" id="next2" data-i18n="nextSection">Next Section</button>
+                </div>
+            </div>
+
+            <!-- Step 3: Values & what the world needs -->
+            <div class="section" id="section3">
+                <h3 class="section-heading">Part 3: Values &amp; What the World Needs</h3>
+                <p class="section-desc" data-i18n="part3Desc">Select up to 5 values that are most important to guide your life and career.</p>
+                <div class="values-grid" id="valuesGrid"></div>
+                <h4 class="subheading">Which problems or causes move you most?</h4>
+                <p class="section-desc">Think of what makes you angry, sad or hopeful when you see it in the news or around you. Pick up to 3.</p>
+                <div class="values-grid" id="causesGrid"></div>
+                <p class="section-error" id="error3"></p>
+                <div class="section-nav">
+                    <button class="btn-secondary" id="prev3" data-i18n="previous">Previous</button>
+                    <button class="btn-primary" id="next3" data-i18n="nextSection">Next Section</button>
+                </div>
+            </div>
+
+            <!-- Step 4: Strengths -->
+            <div class="section" id="section4">
+                <h3 class="section-heading">Part 4: Strengths — What You're Good At</h3>
+                <p class="section-desc">Pick up to 5 things that come naturally to you. Hint: what do people often ask you for help with, or thank you for?</p>
+                <div class="values-grid" id="strengthsGrid"></div>
+                <p class="section-error" id="error4"></p>
+                <div class="section-nav">
+                    <button class="btn-secondary" id="prev4" data-i18n="previous">Previous</button>
+                    <button class="btn-primary" id="next4" data-i18n="nextSection">Next Section</button>
+                </div>
+            </div>
+
+            <!-- Step 5: Reflection -->
+            <div class="section" id="section5">
+                <h3 class="section-heading">Part 5: Reflection — In Your Own Words</h3>
+                <p class="section-desc">Where are you in life right now? This shapes your action plan.</p>
+                <div class="values-grid" id="stageGrid"></div>
+                <p class="section-desc">These questions are optional, but they make your results far more personal. A few words is enough.</p>
+                <div id="reflectionFields"></div>
+                <p class="section-error" id="error5"></p>
+                <div class="section-nav">
+                    <button class="btn-secondary" id="prev5" data-i18n="previous">Previous</button>
+                    <button class="btn-primary" id="calculate" data-i18n="discoverPurpose">Discover My Purpose</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="results" id="results">
+        <div class="container">
+            <div class="results-header">
+                <h2 class="section-title" data-i18n="resultsTitle">Your Purpose Blueprint</h2>
+                <p class="section-subtitle" data-i18n="resultsSubtitle">Insights drawn from your unique profile</p>
+            </div>
+
+            <div class="results-grid">
+                <article class="result-card result-card-full purpose-card">
+                    <h3>Your Purpose Statement</h3>
+                    <p class="purpose-statement" id="purposeStatement" contenteditable="true" spellcheck="true"></p>
+                    <p class="purpose-hint">This is a first draft built from your answers. Click it and rewrite it until it feels true — the best purpose statement is the one you'd say out loud. Your edits are saved.</p>
+                </article>
+
+                <article class="result-card result-card-full">
+                    <h3>Your Ikigai Map</h3>
+                    <p class="score-description">Purpose lives where these four circles overlap. The fuller each one is, the clearer your direction.</p>
+                    <div class="ikigai-map" id="ikigaiMap"></div>
+                </article>
+
+                <article class="result-card result-card-full support-note" id="supportNote" hidden>
+                    <h3>A gentle note</h3>
+                    <p>Your answers suggest life may feel heavy right now. That's a very common starting point, and it doesn't mean something is wrong with you. If low mood has lasted a while, talking with someone you trust, a doctor or a counselor can really help. If you are in crisis or thinking about harming yourself, please contact your local emergency number or find a free, confidential helpline in your country at <a href="https://findahelpline.com" target="_blank" rel="noopener">findahelpline.com</a>.</p>
+                </article>
+
+                <article class="result-card result-card-large">
+                    <h3 data-i18n="ikigaiProfile">Ikigai Profile</h3>
+                    <div class="ikigai-score">
+                        <div class="score-circle">
+                            <span class="score-number" id="ikigaiScore">0</span>
+                            <span class="score-label">/ 45</span>
+                        </div>
+                        <div class="score-details">
+                            <div class="score-meaning" id="ikigaiMeaning"></div>
+                            <p class="score-description" id="ikigaiDesc"></p>
+                            <p class="score-description">The Ikigai-9 measures how strongly you feel your life is worth living right now, across three dimensions (Imai et al., 2012). It describes where you are today, not who you can become.</p>
+                        </div>
+                    </div>
+                    <div class="ikigai-dimensions" id="ikigaiDimensions"></div>
+                </article>
+
+                <article class="result-card">
+                    <h3 data-i18n="riasecCodeTitle">Your RIASEC Code</h3>
+                    <div class="riasec-code" id="riasecCode">---</div>
+                    <p class="riasec-description" id="riasecDesc"></p>
+                    <div class="riasec-bars" id="riasecBars"></div>
+                </article>
+
+                <article class="result-card">
+                    <h3 data-i18n="coreValues">Core Values</h3>
+                    <div class="values-chips" id="resultsValues"></div>
+                    <p class="values-insight">These values are your compass. Look for opportunities that honor them.</p>
+                    <h4 class="subheading">Causes you care about</h4>
+                    <div class="values-chips" id="resultsCauses"></div>
+                </article>
+
+                <article class="result-card result-card-full" id="reflectionCard" hidden>
+                    <h3>In Your Own Words</h3>
+                    <dl class="reflection-echo" id="reflectionEcho"></dl>
+                </article>
+
+                <article class="result-card result-card-full">
+                    <h3 data-i18n="pathForward">Your Path Forward</h3>
+                    <div class="path-sections">
+                        <div class="path-section">
+                            <h4 data-i18n="idealCareers">🎯 Ideal Career Directions</h4>
+                            <ul id="careerSuggestions"></ul>
+                        </div>
+                        <div class="path-section">
+                            <h4>🌍 Roles That Serve Your Causes</h4>
+                            <ul id="causeRoles"></ul>
+                        </div>
+                        <div class="path-section">
+                            <h4 data-i18n="businessIdeas">💡 Business Ideas Aligned With You</h4>
+                            <ul id="businessSuggestions"></ul>
+                        </div>
+                        <div class="path-section">
+                            <h4>🌱 Live Your Purpose Now — No Big Change Needed</h4>
+                            <ul id="meaningSuggestions"></ul>
+                        </div>
+                        <div class="path-section">
+                            <h4>🧪 Your 30-Day Purpose Experiment</h4>
+                            <ol id="actionSteps"></ol>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <div class="results-actions">
+                <button class="btn-secondary" id="restart" data-i18n="retake">Retake Assessment</button>
+                <button class="btn-secondary" id="copyStatement">Copy Purpose Statement</button>
+                <button class="btn-primary" id="saveResults" data-i18n="saveResults">Save Results (Print)</button>
+            </div>
+            <p class="copy-feedback" id="copyFeedback" aria-live="polite"></p>
+        </div>
+    </section>
+
+    <section class="faq">
+        <div class="container">
+            <h2 class="section-title">Questions About Finding Purpose</h2>
+            <div class="faq-list">
+                <details>
+                    <summary>How do I find my purpose in life?</summary>
+                    <p>Purpose sits where four things overlap: what you love, what you are good at, what the world needs, and what you can be paid for. Notice what energizes you, name your strengths, choose a cause you care about, then test small experiments for 30 days. Purpose is built through action more than found by thinking.</p>
+                </details>
+                <details>
+                    <summary>What is ikigai?</summary>
+                    <p>Ikigai (生き甲斐) is a Japanese word meaning "reason for being" — the sense that your life is worth living and that you matter to someone or something. Researchers measure it with the Ikigai-9 scale (Imai et al., 2012).</p>
+                </details>
+                <details>
+                    <summary>What should I do when I feel lost in life?</summary>
+                    <p>Feeling lost is a normal starting point. Start small: track which activities give you energy, talk to people whose lives interest you, and try one low-risk experiment a week. If the feeling comes with lasting sadness or hopelessness, talk to a doctor, counselor or a helpline.</p>
+                </details>
+                <details>
+                    <summary>Do I need to change my job to live my purpose?</summary>
+                    <p>No. Purpose can be lived through volunteering, caregiving, a side project, mentoring, or reshaping your current role toward the parts that use your strengths for people you care about.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p data-i18n="footer">Research: Ikigai-9 (Imai et al., 2012; Fido & Kotera, 2019) • Holland's RIASEC Theory (Holland, 1997) • Built with care for your journey</p>
+        </div>
+    </footer>
+
+    <div class="language-selector">
+        <select id="langSelect" class="lang-select" aria-label="Language">
+            <option value="en">English</option>
+            <option value="es">Español</option>
+            <option value="fr">Français</option>
+            <option value="de">Deutsch</option>
+            <option value="ja">日本語</option>
+            <option value="zh">中文</option>
+        </select>
+    </div>
+
+    <script src="js/i18n.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>
